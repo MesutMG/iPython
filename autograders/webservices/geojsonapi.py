@@ -1,5 +1,6 @@
 import urllib.request, urllib.parse
 import json, ssl
+from pprint import pprint
 
 # Heavily rate limited proxy of https://www.geoapify.com/ api
 serviceurl = 'https://py4e-data.dr-chuck.net/opengeo?'
@@ -10,7 +11,7 @@ ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
 while True:
-    address = input('Enter location: ')
+    address = input()
     if len(address) < 1: break
 
     address = address.strip()
@@ -41,8 +42,6 @@ while True:
 
     # print(json.dumps(js, indent=4))
 
-    lat = js['features'][0]['properties']['lat']
-    lon = js['features'][0]['properties']['lon']
-    print('lat', lat, 'lon', lon)
-    location = js['features'][0]['properties']['formatted']
-    print(location)
+    lat = js['features']
+    pprint(lat)
+
